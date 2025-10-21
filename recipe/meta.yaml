@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kafkit-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/kafkit-{{ version }}.tar.gz
   sha256: e9f998a839a37bc0cbff88cb17b902e4efe15cb2171a2e71364e8137c13235f9
 
 build:
@@ -17,12 +17,12 @@ build:
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python >= {{ python_min }}
     - setuptools
     - setuptools-scm
     - pip
   run:
-    - python {{ python_min }}
+    - python >= {{ python_min }}
     - fastavro
     - uritemplate
 
