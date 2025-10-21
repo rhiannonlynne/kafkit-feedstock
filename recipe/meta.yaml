@@ -1,5 +1,6 @@
 {% set name = "kafkit" %}
-{% set version = "0.2.1" %}
+{% set version = "0.3.1" %}
+{% set python_min = "3.11" %}
 
 package:
   name: {{ name|lower }}
@@ -7,21 +8,22 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/kafkit-{{ version }}.tar.gz
-  sha256: e372f66e710a344dfc0c370a05974e354dba56ea298c495517e68768b61cfaf5
+  sha256: e9f998a839a37bc0cbff88cb17b902e4efe15cb2171a2e71364e8137c13235f9
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
-    - pip
-    - python >=3.8
+    - python {{ python_min }}
+    - setuptools
     - setuptools-scm
+    - pip
   run:
+    - python {{ python_min }}
     - fastavro
-    - python >=3.8
     - uritemplate
 
 test:
